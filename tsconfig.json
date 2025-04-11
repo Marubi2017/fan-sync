@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    //"allowSyntheticDefaultImports": true,
     "paths": {
       "@lib/*": ["./lib/*"],
       "@public/*": ["./public/*"],

@@ -37,6 +37,7 @@ const Upload = () => {
         formData.append("file", files[0]);
         setFormData(formData);
 
+        // Creates a temporary URL for the selected file to display Image Preview
         const fileUrl = URL.createObjectURL(files[0]);
         setImageURL(fileUrl);
       } catch (error) {
@@ -59,18 +60,20 @@ const Upload = () => {
         <h1 className='font-bold text-5xl text-center p-8 text-white'>
           Upload Your Photo
         </h1>
-        <div className='col-lg-8 offset-lg-2'>
+        <div className='col-lg-8 offset-lg-2' id="imagePreview">
+          <h3 className='text-center text-white'>Image Preview</h3>  {/*  Still deciding if I want to keep this */}
           <button
             className='photo-bg flex justify-center items-center w-50 h-50 bg-white rounded-full'
-            onClick={handleDivClick}
+          //onClick={handleDivClick}
           >
             {imageURL ? (
               <Image
                 src={imageURL}
-                alt='Uploaded Image'
+                alt='Image Preview'
                 height={250}
                 width={250}
                 className='rounded-full aspect-square object-cover'
+
               />
             ) : (
               <HiUser size={200} />
@@ -87,6 +90,12 @@ const Upload = () => {
           />
         </div>
       </div>
+      <button
+        className='flex justify-center items-center bg-white text-black py-2 px-4' // !!on hover over button turn lightgray for style element
+        onClick={handleDivClick}
+      >
+        Upload Image
+      </button>
       <Button
         className={`${!imageURL ? "" : "hover:bg-slate-300 w-52"} `}
         onClick={() => router.push("/form")}
